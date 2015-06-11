@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="publisher" class="com.springapp.mvc.model.pubsub.Publisher">
+        <property name="topicName" value="jms/topic/test1"/>
+        <property name="userName" value="user" />
+        <property name="passWrd" value="user@123" />
+        <property name="providerUrl" value="remote://192.168.0.35:4547" />
+        <property name="connectionFac" value="jms/RemoteConnectionFactory"/>
+    </bean>
+
+    <bean id="subscriber" class="com.springapp.mvc.model.pubsub.Subscriber">
+        <property name="topicName" value="jms/topic/test1"/>
+        <property name="userName" value="user" />
+        <property name="passWrd" value="user@123" />
+        <property name="providerUrl" value="remote://192.168.0.35:4547" />
+        <property name="connectionFac" value="jms/RemoteConnectionFactory"/>
+        <property name="clientID" value="client01"/>
+    </bean>
+
+    <bean id="publisher1" class="com.springapp.mvc.model.pubsub.Publisher">
+        <property name="topicName" value="/dtl_ownersip_transferT"/>
+        <property name="userName" value="omobio" />
+        <property name="passWrd" value="pass#word1" />
+        <property name="providerUrl" value="remote://172.26.75.72:4547"/>
+        <property name="connectionFac" value="jms/RemoteConnectionFactory"/>
+    </bean>
+
+    <bean id="subscriber1" class="com.springapp.mvc.model.pubsub.Subscriber">
+        <property name="topicName" value="/dtl_ownersip_transferT"/>
+        <property name="userName" value="omobio" />
+        <property name="passWrd" value="pass#word1" />
+        <property name="providerUrl" value="remote://172.26.75.72:4547"/>
+        <property name="connectionFac" value="jms/RemoteConnectionFactory"/>
+        <property name="clientID" value="client01"/>
+    </bean>
+
+    <bean id="account" class="com.springapp.mvc.model.neo4j.Account"/>
+
+    <bean id="corporate" class="com.springapp.mvc.model.neo4j.Corporate"/>
+
+    <bean id="customer" class="com.springapp.mvc.model.neo4j.Customer"/>
+
+</beans>

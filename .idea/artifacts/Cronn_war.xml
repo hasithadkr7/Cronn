@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" build-on-make="true" name="Cronn:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="Cronn.war">
+      <element id="artifact" artifact-name="Cronn:war exploded" />
+    </root>
+  </artifact>
+</component>
