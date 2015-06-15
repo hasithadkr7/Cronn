@@ -5,7 +5,7 @@
        http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <bean id="publisher" class="com.springapp.mvc.model.pubsub.Publisher">
-        <property name="topicName" value="jms/topic/test1"/>
+        <!--<property name="topicName" value="jms/topic/test1"/>-->
         <property name="userName" value="user" />
         <property name="passWrd" value="user@123" />
         <property name="providerUrl" value="remote://192.168.0.35:4547" />
@@ -13,12 +13,12 @@
     </bean>
 
     <bean id="subscriber" class="com.springapp.mvc.model.pubsub.Subscriber">
-        <property name="topicName" value="jms/topic/test1"/>
+        <!--<property name="topicName" value="jms/topic/test1"/>-->
         <property name="userName" value="user" />
         <property name="passWrd" value="user@123" />
         <property name="providerUrl" value="remote://192.168.0.35:4547" />
         <property name="connectionFac" value="jms/RemoteConnectionFactory"/>
-        <property name="clientID" value="client01"/>
+        <!--<property name="clientID" value="client01"/>-->
     </bean>
 
     <bean id="publisher1" class="com.springapp.mvc.model.pubsub.Publisher">

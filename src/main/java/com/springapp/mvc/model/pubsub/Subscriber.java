@@ -33,8 +33,9 @@ public class Subscriber{
     private String clientID;
     private final Logger logger = Logger.getLogger("Subscriber.class");
 
-    public  TopicConnection ConnectionSetup() {
+    public  TopicConnection ConnectionSetup(String topic) {
         try{
+            this.setTopicName(topic);
             Hashtable<String, String> env = new Hashtable();
             env.put("java.naming.provider.url",providerUrl);
             env.put("java.naming.factory.initial",
@@ -61,9 +62,10 @@ public class Subscriber{
         return null;
     }
 
-    public void receiveMessage() {
+    public void receiveMessage(String topic,String client_id) {
         try {
-            TopicConnection topicConn = ConnectionSetup();
+            this.setClientID(client_id);
+            TopicConnection topicConn = ConnectionSetup(topic);
             topicConn.setClientID(clientID);
             topicConn.start();
             this.topicSession = topicConn.createSession(false, 1);
@@ -88,7 +90,7 @@ public class Subscriber{
                     System.out.println("No messages ");
                     logger.info("No messages");
                 }
-                Thread.currentThread().sleep(3000);
+                Thread.currentThread().sleep(5000);
             }
         }
         catch (JMSException e){

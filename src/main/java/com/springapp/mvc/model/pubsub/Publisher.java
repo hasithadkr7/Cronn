@@ -31,8 +31,9 @@ public class Publisher{
     private String providerUrl;
     private String connectionFac;
 
-    public TopicConnection ConnectionSetup(){
+    public TopicConnection ConnectionSetup(String topic){
         try{
+            this.topicName = topic;
             Properties env = new Properties();
             env.put(Context.PROVIDER_URL, providerUrl);
             env.put(Context.INITIAL_CONTEXT_FACTORY,"org.jboss.naming.remote.client.InitialContextFactory");
@@ -58,9 +59,9 @@ public class Publisher{
         }
     }
 
-    public void send_message(String publishMsg){
+    public void send_message(String publishMsg,String topic){
         try {
-            TopicConnection topicConn = ConnectionSetup();
+            TopicConnection topicConn = ConnectionSetup(topic);
             TopicSession topicSession = topicConn.createTopicSession(true, 1);
             MessageProducer topicPublisher = topicSession
                     .createPublisher(this.topics);
@@ -73,7 +74,7 @@ public class Publisher{
             topicPublisher.send(this.message);
             topicSession.commit();
             System.out.println("***************************");
-            String time = new SimpleDateFormat("yyyy/MM/DD hh:mm")
+            String time = new SimpleDateFormat("yyyy/MM/DD hh:mm:ss")
                     .format(new Date());
             System.out.println("Published time : " + time);
             System.out.println("Topic name : " + this.topicName);
@@ -88,10 +89,10 @@ public class Publisher{
                     this.message.getText() + "|EVENT_TYPE=" +
                     this.message.getStringProperty("EVENT_TYPE") + "|MSGID=" +
                     this.message.getStringProperty("MSGID"));
-            logger.info("Published time : " + time + "\nMessage published=" +
-                    this.message.getText() + "|EVENT_TYPE=" +
-                    this.message.getStringProperty("EVENT_TYPE") + "|MSGID=" +
-                    this.message.getStringProperty("MSGID"));
+//            logger.info("Published time : " + time + "\nMessage published=" +
+//                    this.message.getText() + "|EVENT_TYPE=" +
+//                    this.message.getStringProperty("EVENT_TYPE") + "|MSGID=" +
+//                    this.message.getStringProperty("MSGID"));
             i++;
             topicConn.close();
             topicSession.close();

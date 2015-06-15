@@ -1,6 +1,7 @@
 package com.springapp.mvc.model.neo4j;
 
 import org.springframework.data.neo4j.annotation.GraphId;
+import org.springframework.data.neo4j.annotation.Indexed;
 import org.springframework.data.neo4j.annotation.NodeEntity;
 
 /**
@@ -13,8 +14,7 @@ import org.springframework.data.neo4j.annotation.NodeEntity;
 public class Customer {
 
     @GraphId private Long id;
-
-    private String id_number;
+    @Indexed private String id_number;
     private String id_type;
     private String title;
     private String first_name;
