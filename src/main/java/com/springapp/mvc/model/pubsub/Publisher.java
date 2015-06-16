@@ -70,7 +70,6 @@ public class Publisher{
             this.message = topicSession.createTextMessage();
             this.message.setText(publishMsg);
             this.message.setStringProperty("MSGID", "MSG-" + i);
-
             topicPublisher.send(this.message);
             topicSession.commit();
             System.out.println("***************************");
@@ -89,10 +88,6 @@ public class Publisher{
                     this.message.getText() + "|EVENT_TYPE=" +
                     this.message.getStringProperty("EVENT_TYPE") + "|MSGID=" +
                     this.message.getStringProperty("MSGID"));
-//            logger.info("Published time : " + time + "\nMessage published=" +
-//                    this.message.getText() + "|EVENT_TYPE=" +
-//                    this.message.getStringProperty("EVENT_TYPE") + "|MSGID=" +
-//                    this.message.getStringProperty("MSGID"));
             i++;
             topicConn.close();
             topicSession.close();
@@ -120,4 +115,5 @@ public class Publisher{
     public void setConnectionFac(String connectionFac) {
         this.connectionFac = connectionFac;
     }
+
 }

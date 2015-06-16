@@ -78,6 +78,7 @@ public class Subscriber{
                     System.out.println("***********************************");
                     System.out.println("Received time : " + time);
                     System.out.println("Topic : " + topic1.getTopicName());
+                    System.out.println("Client ID : "+this.clientID);
                     System.out.println("Received message : " + this.resvmsg.getText());
                     System.out.println(" EVENT-TYPE : " +
                             this.resvmsg.getStringProperty("EVENT_TYPE"));
@@ -88,6 +89,7 @@ public class Subscriber{
                 }
                 else {
                     System.out.println("No messages ");
+                    System.out.println("Client ID : "+this.clientID);
                     logger.info("No messages");
                 }
                 Thread.currentThread().sleep(5000);

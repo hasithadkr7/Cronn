@@ -22,7 +22,7 @@
     </bean>
 
     <bean id="publisher1" class="com.springapp.mvc.model.pubsub.Publisher">
-        <property name="topicName" value="/dtl_ownersip_transferT"/>
+        <!--<property name="topicName" value="/dtl_ownersip_transferT"/>-->
         <property name="userName" value="omobio" />
         <property name="passWrd" value="pass#word1" />
         <property name="providerUrl" value="remote://172.26.75.72:4547"/>
@@ -30,12 +30,12 @@
     </bean>
 
     <bean id="subscriber1" class="com.springapp.mvc.model.pubsub.Subscriber">
-        <property name="topicName" value="/dtl_ownersip_transferT"/>
+        <!--<property name="topicName" value="/dtl_ownersip_transferT"/>-->
         <property name="userName" value="omobio" />
         <property name="passWrd" value="pass#word1" />
         <property name="providerUrl" value="remote://172.26.75.72:4547"/>
         <property name="connectionFac" value="jms/RemoteConnectionFactory"/>
-        <property name="clientID" value="client01"/>
+        <!--<property name="clientID" value="client01"/>-->
     </bean>
 
     <bean id="account" class="com.springapp.mvc.model.neo4j.Account"/>
